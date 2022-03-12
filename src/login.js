@@ -31,7 +31,7 @@ function Login() {
             id="floatingPassword"
             placeholder="Password"
           />
-          <label for="floatingPassword">Password</label>
+          <label for="floatingPassword">Pass</label>
         </div>
 
         <div class="checkbox mb-3">
