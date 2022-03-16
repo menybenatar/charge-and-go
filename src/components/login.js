@@ -2,7 +2,7 @@ import React, { Component, useState } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import cookie from "react-cookies";
-// import "./signin.css";
+import "../styles/login.css";
 
 export default class Login extends Component {
   constructor(props) {
@@ -19,10 +19,10 @@ export default class Login extends Component {
     let res;
     let token;
     try {
-      const res = await axios.post("http://10.0.0.5:4000/user/login", {
-        email: this.email,
-        password: this.password,
-      });
+      // const res = await axios.post("http://10.0.0.5:4000/user/login", {
+      //   email: this.email,
+      //   password: this.password,
+      // });
       // const token = res.body.token;  todo whis shai and yair !!!
       token = "1234";
       cookie.save("token", token);
@@ -58,7 +58,6 @@ export default class Login extends Component {
               class="form-control"
               id="email"
               placeholder="name@example.com"
-              // value={this.state.email}
               onChange={this.emailChange}
               required
             />
@@ -70,7 +69,6 @@ export default class Login extends Component {
               class="form-control"
               id="password"
               placeholder="Password"
-              // value={this.state.password}
               onChange={this.passwordChange}
               required
             />
