@@ -33,7 +33,7 @@ export default class Home extends Component {
     this.validateToken();
     return (
       <div class="App">
-        <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top  p-2" style={{"backgroundColor": "#e3f2fd"}}>
           <a class="navbar-brand" href="#">
             Navbar
           </a>
