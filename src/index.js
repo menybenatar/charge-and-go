@@ -9,10 +9,14 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = { token: undefined };
-    this.appState = this.setState.bind(this);
+    this.setStateApp = this.setState.bind(this);
   }
+  // only once is call
   componentDidMount() {
     this.setState({ token: cookie.load("token") });
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.token !== nextState.token;
   }
   render() {
     return (
@@ -21,7 +25,11 @@ export default class App extends Component {
           <Route
             path="/"
             element={
-              this.state.token ? <Home /> : <Login appState={this.appState} />
+              this.state.token ? (
+                <Home setStateApp={this.setStateApp} />
+              ) : (
+                <Login setStateApp={this.setStateApp} />
+              )
             }
           ></Route>
         </Routes>
@@ -30,10 +38,4 @@ export default class App extends Component {
   }
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
-
+ReactDOM.render(<App />, document.getElementById("root"));
