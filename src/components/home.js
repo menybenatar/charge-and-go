@@ -16,13 +16,13 @@ export default function Home({ setStateApp }) {
   ];
 
   return (
-    <div class="App">
+    <div className="App">
       <NavBar></NavBar>
       <div>
-        <div class="split left">
+        <div className="split left">
           <TabView> </TabView>
         </div>
-        <div class="split right">
+        <div className="split right">
           <MapView
             stations={stations}
             setSelectedStation={setSelectedStation}
