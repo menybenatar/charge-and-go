@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import cookie from "react-cookies";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/login";
 import Home from "./components/home";
+import Profile from "./components/profile";
+import ProtectedRoutes from "./components/protectedRoutes";
 
 export default class App extends Component {
   constructor(props) {
@@ -12,23 +13,6 @@ export default class App extends Component {
     this.setStateApp = this.setState.bind(this);
   }
   // only once is call
-  validateToken() {
-    let token = cookie.load("token");
-    try {
-      // const res = await axios.post("http://10.0.0.5:4000/user/login", {
-      //   email: this.email,
-      //   password: this.password,
-      // });
-      // const token = res.body.token;  todo whis shai and yair !!!
-    } catch (err) {
-      cookie.remove("token");
-      token = undefined;
-    }
-    this.setStateApp({ token: token });
-  }
-  componentDidMount() {
-    this.validateToken();
-  }
   shouldComponentUpdate(nextProps, nextState) {
     return this.state.token !== nextState.token;
   }
@@ -36,16 +20,12 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              this.state.token ? (
-                <Home setStateApp={this.setStateApp} />
-              ) : (
-                <Login setStateApp={this.setStateApp} />
-              )
-            }
-          ></Route>
+          <Route path="/login" element={<Login />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     );
