@@ -5,6 +5,7 @@ import cookie from "react-cookies";
 import "../css/home.css";
 import MapView from "../components/mapView";
 import TabView from "../components/tabView";
+import MyFancyComponent from "../components/map"
 
 // import "./signin.css";
 
