@@ -12,8 +12,22 @@ export default class App extends Component {
     this.setStateApp = this.setState.bind(this);
   }
   // only once is call
+  validateToken() {
+    let token = cookie.load("token");
+    try {
+      // const res = await axios.post("http://10.0.0.5:4000/user/login", {
+      //   email: this.email,
+      //   password: this.password,
+      // });
+      // const token = res.body.token;  todo whis shai and yair !!!
+    } catch (err) {
+      cookie.remove("token");
+      token = undefined;
+    }
+    this.setStateApp({ token: token });
+  }
   componentDidMount() {
-    this.setState({ token: cookie.load("token") });
+    this.validateToken();
   }
   shouldComponentUpdate(nextProps, nextState) {
     return this.state.token !== nextState.token;
