@@ -1,4 +1,14 @@
+import cookie from "react-cookies";
+import { useNavigate } from "react-router-dom";
+
 export default function NavBar() {
+  const navigate = useNavigate();
+
+  function logout() {
+    cookie.remove("token");
+    navigate("/login");
+  }
+
   return (
     <nav
       class="navbar navbar-light navbar-expand-lg fixed-top  p-2"
@@ -25,6 +35,9 @@ export default function NavBar() {
           </a>
           <a class="nav-item nav-link" href="pricing">
             Pricing
+          </a>
+          <a class="nav-item nav-link" href="" onClick={logout}>
+            Logout
           </a>
         </div>
       </div>

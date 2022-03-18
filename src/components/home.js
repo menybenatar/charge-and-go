@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
-import cookie from "react-cookies";
 import "../css/home.css";
 import MapView from "../components/mapView";
 import TabView from "../components/tabView";
@@ -29,9 +27,7 @@ export default function Home({ setStateApp }) {
             stations={stations}
             setSelectedStation={setSelectedStation}
             selectedStation={selectedStation}
-          >
-            {" "}
-          </MapView>
+          />
         </div>
       </div>
     </div>
