@@ -36,32 +36,32 @@ export default function Login() {
     setPassword(e.target.value);
   }
   return (
-    <main class="form-signin">
+    <main className="form-signin">
       <form onSubmit={login}>
         <img
-          class="mb-4"
+          className="mb-4"
           src="/docs/5.1/assets/brand/bootstrap-logo.svg"
           alt=""
           width="72"
           height="57"
         />
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
-        <div class="form-floating">
+        <div className="form-floating">
           <input
             type="email"
-            class="form-control"
+            className="form-control"
             id="email"
             placeholder="name@example.com"
             onChange={emailChange}
             required
           />
-          <label for="floatingInput">Email address</label>
+          <label>Email address</label>
         </div>
-        <div class="form-floating">
+        <div className="form-floating">
           <input
             type="password"
-            class="form-control"
+            className="form-control"
             id="password"
             placeholder="Password"
             onChange={passwordChange}
@@ -71,20 +71,20 @@ export default function Login() {
           >
             {/* <div></div> */}
           </input>
-          <label for="floatingPassword">Password</label>
+          <label>Password</label>
         </div>
 
-        <div class="checkbox mb-3">
+        <div className="checkbox mb-3">
           <label>
             <input type="checkbox" value="remember-me" /> Remember me
           </label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">
+        <button className="w-100 btn btn-lg btn-primary" type="submit">
           Sign in
         </button>
 
         <div
-          class={
+          className={
             "alert alert-danger m-1  p-2 " + (error ? "d-block" : "d-none")
           }
           role="alert"
