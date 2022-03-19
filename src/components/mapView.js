@@ -31,10 +31,10 @@ const InnerMap = compose(
         onClick={() => {
           setSelectedStation(station);
         }}
-        //   icon={{
-        //     url: `/skateboarding.svg`,
-        //     scaledSize: new window.google.maps.Size(25, 25)
-        //   }}
+        icon={{
+          url: `/lightning.svg`,
+          scaledSize: new window.google.maps.Size(40, 40),
+        }}
       />
     ))}
 
