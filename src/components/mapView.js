@@ -21,7 +21,13 @@ const InnerMap = compose(
   withScriptjs,
   withGoogleMap
 )(({ stations, setSelectedStation, selectedStation }) => (
-  <GoogleMap defaultZoom={12} defaultCenter={{ lat: 32, lng: 34.855499 }}>
+  <GoogleMap
+    zoom={selectedStation ? 16 : 12}
+    center={{
+      lat: selectedStation ? selectedStation.location[0] : 32,
+      lng: selectedStation ? selectedStation.location[1] : 34.855499,
+    }}
+  >
     {stations.map((station) => (
       <Marker
         key={station.STATION_ID}
