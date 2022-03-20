@@ -8,6 +8,7 @@ import {
 } from "react-google-maps";
 
 import { compose, withProps } from "recompose";
+import MapPopup from "./mapPopup";
 
 const InnerMap = compose(
   withProps({
@@ -48,10 +49,7 @@ const InnerMap = compose(
           lng: selectedStation.location[1],
         }}
       >
-        <div>
-          <h2>{selectedStation.NAME}</h2>
-          <p>{selectedStation.DESCRIPTION}</p>
-        </div>
+        <MapPopup station={selectedStation} />
       </InfoWindow>
     )}
   </GoogleMap>
