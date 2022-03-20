@@ -58,25 +58,21 @@ export default function Home({ setStateApp }) {
     },
   ];
 
-  return (
-    <div className="App">
-      <NavBar></NavBar>
-      <div>
-        <div className="split left">
-          <TabView
-            stations={stations}
-            setSelectedStation={setSelectedStation}
-            selectedStation={selectedStation}
-          />
-        </div>
-        <div className="split right">
-          <MapView
-            stations={stations}
-            setSelectedStation={setSelectedStation}
-            selectedStation={selectedStation}
-          />
-        </div>
-      </div>
-    </div>
-  );
+  return [
+    <NavBar></NavBar>,
+    <div className="split left">
+      <TabView
+        stations={stations}
+        setSelectedStation={setSelectedStation}
+        selectedStation={selectedStation}
+      />
+    </div>,
+    <div className="split right">
+      <MapView
+        stations={stations}
+        setSelectedStation={setSelectedStation}
+        selectedStation={selectedStation}
+      />
+    </div>,
+  ];
 }

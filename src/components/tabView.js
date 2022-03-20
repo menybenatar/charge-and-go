@@ -8,7 +8,7 @@ export default function TabView({
 }) {
   {
     return (
-      <div>
+      <div style={{ overflowY: "scroll", height: "100%" }}>
         {stations.map((station) => (
           <StationTab
             key={station.STATION_ID}
