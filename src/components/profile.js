@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "./navBar";
+import EditProfile from "./editProfile";
 
 export default class Profile extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export default class Profile extends Component {
     return (
       <div>
         <NavBar></NavBar>
-        <h1>Profile Page</h1>
+        <EditProfile></EditProfile>
       </div>
     );
   }
