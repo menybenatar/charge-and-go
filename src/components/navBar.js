@@ -1,11 +1,14 @@
+import { useEffect, useState } from "react";
 import cookie from "react-cookies";
 import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const navigate = useNavigate();
+  const isAdmin = cookie.load("admin") === "true";
 
   function logout() {
     cookie.remove("token");
+    cookie.remove("admin");
     navigate("/login");
   }
 
@@ -33,9 +36,11 @@ export default function NavBar() {
           <a className="nav-item nav-link" href="profile">
             Profile
           </a>
-          <a className="nav-item nav-link" href="pricing">
-            Pricing
-          </a>
+          {isAdmin == true && (
+            <a className="nav-item nav-link" href="Admin">
+              Admin
+            </a>
+          )}
           <a className="nav-item nav-link" href="" onClick={logout}>
             Logout
           </a>

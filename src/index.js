@@ -5,6 +5,8 @@ import Login from "./components/login";
 import Home from "./components/home";
 import Profile from "./components/profile";
 import ProtectedRoutes from "./components/protectedRoutes";
+import AdminRoutes from "./components/adminRoutes";
+import Admin from "./components/admin";
 
 export default class App extends Component {
   constructor(props) {
@@ -24,6 +26,9 @@ export default class App extends Component {
           <Route element={<ProtectedRoutes />}>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
+          </Route>
+          <Route element={<AdminRoutes />}>
+            <Route path="/admin" element={<Admin />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

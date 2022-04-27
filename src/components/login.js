@@ -22,6 +22,7 @@ export default function Login() {
       // const token = res.body.token;  todo whis shai and yair !!!
 
       cookie.save("token", token);
+      cookie.save("admin", false);
       navigate("/home");
     } catch (err) {
       setError(true);
@@ -42,7 +43,7 @@ export default function Login() {
           className="mb-4"
           src="/docs/5.1/assets/brand/bootstrap-logo.svg"
           alt=""
-          width="72"
+          width="73"
           height="57"
         />
         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
