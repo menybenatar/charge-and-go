@@ -8,11 +8,11 @@ export default class EditProfile extends Component {
 
   render() {
     return (
-      <div class="h-100 p-5 bg-light border rounded-3">
-        <div class="container-fluid py-5">
-          <div class="row g-3" style={{ "background-color": "azure" }}>
+      <div class="h-50 p-5 border rounded-3">
+        <div class="container-fluid py-5 rounded-3">
+          <div class="row g-3" style={{ "background-color": "white" }}>
             <div class="">
-              <h4 class="mb-3">Billing address</h4>
+              <h4 class="mb-3">Edit Profile</h4>
               <form class="needs-validation" novalidate>
                 <div class="row g-3">
                   <div class="col-sm-6">
