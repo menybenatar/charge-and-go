@@ -13,18 +13,23 @@ export default function NavBar() {
   }
 
   return (
-    <nav
-      className="navbar navbar-light navbar-expand-lg fixed-top  p-2"
+    //navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow
+    <header
+      className="navbar navbar-light navbar-expand-md sticky-top p-0"
       style={{ backgroundColor: "#e3f2fd" }}
     >
-      <a className="navbar-brand" href="/">
+      <a
+        className="navbar-brand"
+        href="/"
+        style={{ backgroundColor: "#e3f2fd", boxShadow: "none" }}
+      >
         Charge&Go
       </a>
       <button
         className="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#navbarNavAltMarkup"
+        data-bs-target="#navbarNavAltMarkup, #sidebarMenu"
         aria-controls="navbarNavAltMarkup"
         aria-expanded="false"
         aria-label="Toggle navigation"
@@ -46,6 +51,6 @@ export default function NavBar() {
           </a>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }

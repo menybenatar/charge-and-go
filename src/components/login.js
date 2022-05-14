@@ -22,7 +22,7 @@ export default function Login() {
       // const token = res.body.token;  todo whis shai and yair !!!
 
       cookie.save("token", token);
-      cookie.save("admin", false);
+      cookie.save("admin", true);
       navigate("/home");
     } catch (err) {
       setError(true);

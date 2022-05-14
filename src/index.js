@@ -6,7 +6,8 @@ import Home from "./components/home";
 import Profile from "./components/profile";
 import ProtectedRoutes from "./components/protectedRoutes";
 import AdminRoutes from "./components/adminRoutes";
-import Admin from "./components/admin";
+import Admin from "./components/new_admin";
+import NavBar from "./components/navBar";
 
 export default class App extends Component {
   constructor(props) {
