@@ -60,6 +60,7 @@ export default function NavBar() {
                 ? "notification_active.png"
                 : "notification_inactive.png"
             }
+            onClick={cookie.remove("notifications")}
           />
         </a>
       </div>

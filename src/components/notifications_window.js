@@ -5,11 +5,21 @@ import TabView from "../components/tabView";
 import NavBar from "./navBar";
 
 export default function Notifications() {
+  const notifications_arr = [
+    "yair is gay",
+    "he recovered",
+    "עכשיו הוא גיי בעברית",
+  ];
   return (
     <div class="container-fluid p-0" style={{ overflowX: "hidden" }}>
       <NavBar />
-      <div className="row">
-        <h1>notifications</h1>
+
+      <div className="row w-75 m-auto p-5">
+        {notifications_arr.map((noti) => (
+          <div class="alert alert-info" role="alert">
+            {noti}
+          </div>
+        ))}
       </div>
     </div>
   );

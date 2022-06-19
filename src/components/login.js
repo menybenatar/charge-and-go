@@ -23,7 +23,7 @@ export default function Login() {
 
       cookie.save("token", token);
       cookie.save("admin", true);
-      cookie.save("notifications", false);
+      cookie.save("notifications", true);
 
       navigate("/home");
     } catch (err) {
