@@ -8,6 +8,7 @@ import ProtectedRoutes from "./components/protectedRoutes";
 import AdminRoutes from "./components/adminRoutes";
 import Admin from "./components/new_admin";
 import NavBar from "./components/navBar";
+import Notifications from "./components/notifications_window";
 
 export default class App extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ export default class App extends Component {
           <Route element={<ProtectedRoutes />}>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/notifications" element={<Notifications />} />
           </Route>
           <Route element={<AdminRoutes />}>
             <Route path="/admin" element={<Admin />} />

@@ -1,72 +1,65 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import NavBar from "./navBar";
 import Sidebar from "./sidebar";
 
 import "../css/admin.css";
+import BlockUsers from "./block_users";
+import DeleteUsers from "./delete_users";
+import AddAdmin from "./add_admin";
 
-export default class Admin extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default function Admin() {
+  const [showBlock, setShowBlock] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const [showAddAdmin, setShowAddAdmin] = useState(false);
 
-  render() {
-    return (
-      <div class="container-fluid p-0" style={{ overflowX: "hidden" }}>
-        <NavBar />
-        <div className="row">
-          <Sidebar />
-          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="jumbotron">
-              <h1 class="display-4">Hello, world!</h1>
-              <p class="lead">
-                This is a simple hero unit, a simple jumbotron-style component
-                for calling extra attention to featured content or information.
-              </p>
-              <p>
-                It uses utility classes for typography and spacing to space
-                content out within the larger container.
-              </p>
-              <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">
-                  Learn more
-                </a>
-              </p>
+  useEffect(() => {}, []);
+
+  return (
+    <div class="container-fluid p-0" style={{ overflowX: "hidden" }}>
+      <NavBar />
+      <div className="row">
+        <Sidebar
+          items={[
+            {
+              label: "block user",
+              handleClick: () => {
+                setShowBlock(true);
+                setShowDelete(false);
+                setShowAddAdmin(false);
+              },
+            },
+            {
+              label: "delete user",
+              handleClick: () => {
+                setShowBlock(false);
+                setShowDelete(true);
+                setShowAddAdmin(false);
+              },
+            },
+            {
+              label: "add admin",
+              handleClick: () => {
+                setShowBlock(false);
+                setShowDelete(false);
+                setShowAddAdmin(true);
+              },
+            },
+          ]}
+        />
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          {showBlock ? (
+            <BlockUsers></BlockUsers>
+          ) : showDelete ? (
+            <DeleteUsers></DeleteUsers>
+          ) : showAddAdmin ? (
+            <AddAdmin></AddAdmin>
+          ) : (
+            <div style={{ marginTop: "100px" }}>
+              <h1>Welcome dear admin!</h1>
             </div>
-            <div class="jumbotron">
-              <h1 class="display-4">Hello, world!</h1>
-              <p class="lead">
-                This is a simple hero unit, a simple jumbotron-style component
-                for calling extra attention to featured content or information.
-              </p>
-              <p>
-                It uses utility classes for typography and spacing to space
-                content out within the larger container.
-              </p>
-              <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">
-                  Learn more
-                </a>
-              </p>
-            </div>
-            <div class="jumbotron">
-              <h1 class="display-4">Hello, world!</h1>
-              <p class="lead">
-                This is a simple hero unit, a simple jumbotron-style component
-                for calling extra attention to featured content or information.
-              </p>
-              <p>
-                It uses utility classes for typography and spacing to space
-                content out within the larger container.
-              </p>
-              <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">
-                  Learn more
-                </a>
-              </p>
-            </div>
-          </main>
-        </div>
+          )}
+        </main>
       </div>
-    );
-  }
+    </div>
+  );
 }

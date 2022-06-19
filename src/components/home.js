@@ -56,23 +56,33 @@ export default function Home({ setStateApp }) {
       location: [32, 34.9556499],
       STATION_ID: 12341,
     },
+    {
+      NAME: "station 1",
+      DESCRIPTION: "station 1 description",
+      location: [32, 34.9556499],
+      STATION_ID: 123413,
+    },
   ];
 
-  return [
-    <NavBar></NavBar>,
-    <div className="split left">
-      <TabView
-        stations={stations}
-        setSelectedStation={setSelectedStation}
-        selectedStation={selectedStation}
-      />
-    </div>,
-    <div className="split right">
-      <MapView
-        stations={stations}
-        setSelectedStation={setSelectedStation}
-        selectedStation={selectedStation}
-      />
-    </div>,
-  ];
+  return (
+    <div class="container-fluid p-0" style={{ overflowX: "hidden" }}>
+      <NavBar />
+      <div className="row h-auto">
+        <div className="col-3 p-0" style={{ overflowY: "scroll" }}>
+          <TabView
+            stations={stations}
+            setSelectedStation={setSelectedStation}
+            selectedStation={selectedStation}
+          />
+        </div>
+        <div className="col p-0" style={{ overflowY: "scroll" }}>
+          <MapView
+            stations={stations}
+            setSelectedStation={setSelectedStation}
+            selectedStation={selectedStation}
+          />
+        </div>
+      </div>
+    </div>
+  );
 }

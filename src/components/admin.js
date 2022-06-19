@@ -10,7 +10,7 @@ export default class Admin extends Component {
   render() {
     return [
       <NavBar></NavBar>,
-      <div className="row">
+      <div className="row h-100">
         <div class="col-md-4 col-sm-12 col-lg-3 ">
           <div>
             <button type="button" class="btn btn-info btn-lg">

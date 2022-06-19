@@ -5,10 +5,12 @@ import { useNavigate } from "react-router-dom";
 export default function NavBar() {
   const navigate = useNavigate();
   const isAdmin = cookie.load("admin") === "true";
+  const notifications = cookie.load("notifications") === "true";
 
   function logout() {
     cookie.remove("token");
     cookie.remove("admin");
+    cookie.remove("notifications");
     navigate("/login");
   }
 
@@ -50,6 +52,16 @@ export default function NavBar() {
             Logout
           </a>
         </div>
+        <a href="notifications">
+          <img
+            style={{ height: "25px", width: "25px", cursor: "pointer" }}
+            src={
+              notifications
+                ? "notification_active.png"
+                : "notification_inactive.png"
+            }
+          />
+        </a>
       </div>
     </header>
   );
