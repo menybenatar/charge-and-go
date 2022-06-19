@@ -65,17 +65,17 @@ export default function Home({ setStateApp }) {
   ];
 
   return (
-    <div class="container-fluid p-0" style={{ overflowX: "hidden" }}>
+    <div class="container-fluid p-0 " style={{ overflowX: "hidden" }}>
       <NavBar />
-      <div className="row h-auto">
-        <div className="col-3 p-0" style={{ overflowY: "scroll" }}>
+      <div className="row flex-grow-1" style={{ height: "93%" }}>
+        <div className="col-3 p-0 h-100" style={{ overflowY: "scroll" }}>
           <TabView
             stations={stations}
             setSelectedStation={setSelectedStation}
             selectedStation={selectedStation}
           />
         </div>
-        <div className="col p-0" style={{ overflowY: "scroll" }}>
+        <div className="col p-0 h-100" style={{ overflowY: "scroll" }}>
           <MapView
             stations={stations}
             setSelectedStation={setSelectedStation}

@@ -43,10 +43,10 @@ export default function Login() {
       <form onSubmit={login}>
         <img
           className="mb-4"
-          src="/docs/5.1/assets/brand/bootstrap-logo.svg"
+          src="home_logo.png"
           alt=""
-          width="73"
-          height="57"
+          width="80%"
+          height="80%"
         />
         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
