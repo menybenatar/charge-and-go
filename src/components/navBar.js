@@ -23,7 +23,11 @@ export default function NavBar() {
       <a
         className="navbar-brand"
         href="/"
-        style={{ backgroundColor: "#e3f2fd", boxShadow: "none" }}
+        style={{
+          backgroundColor: "#e3f2fd",
+          boxShadow: "none",
+          paddingLeft: "7px",
+        }}
       >
         Charge&Go
       </a>

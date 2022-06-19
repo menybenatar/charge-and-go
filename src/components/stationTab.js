@@ -17,7 +17,7 @@ export default function StationTab({
       href="#"
       onClick={tabClicked}
       class={
-        "list-group-item list-group-item-action py-3 lh-tight " +
+        "list-group-item list-group-item-action py-3 lh-tight p-4 " +
         (selectedStation && selectedStation.STATION_ID === station.STATION_ID
           ? "active"
           : "")
