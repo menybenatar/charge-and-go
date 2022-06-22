@@ -1,14 +1,22 @@
-function SideBarItem({ label, handleClick }) {
+import { useState } from "react";
+
+function SideBarItem({ item, selected }) {
   return (
-    <li class="nav-item btn order border-primary m-3">
-      <a class="nav-link " aria-current="page" onClick={handleClick}>
-        {label}
+    <li class="nav-item btn order border-primary m-3 ">
+      <a
+        class={"nav-link " + (selected ? "active" : "")}
+        aria-current="page"
+        onClick={() => {
+          item.handleClick();
+        }}
+      >
+        {item.label}
       </a>
     </li>
   );
 }
 
-export default function Sidebar({ items }) {
+export default function Sidebar({ items, selectedItem }) {
   return (
     <nav
       id="sidebarMenu"
@@ -22,8 +30,8 @@ export default function Sidebar({ items }) {
           {items &&
             items.map((item) => (
               <SideBarItem
-                label={item.label}
-                handleClick={item.handleClick}
+                selected={selectedItem && selectedItem.id === item.id}
+                item={item}
               ></SideBarItem>
             ))}
         </ul>

@@ -8,9 +8,7 @@ import DeleteUsers from "./delete_users";
 import AddAdmin from "./add_admin";
 
 export default function Admin() {
-  const [showBlock, setShowBlock] = useState(false);
-  const [showDelete, setShowDelete] = useState(false);
-  const [showAddAdmin, setShowAddAdmin] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(undefined);
 
   useEffect(() => {}, []);
 
@@ -19,44 +17,44 @@ export default function Admin() {
       <NavBar />
       <div className="row">
         <Sidebar
+          selectedItem={selectedItem}
           items={[
             {
+              id: 1,
               label: "block user",
-              handleClick: () => {
-                setShowBlock(true);
-                setShowDelete(false);
-                setShowAddAdmin(false);
+              handleClick: function () {
+                setSelectedItem(this);
               },
             },
             {
+              id: 2,
               label: "delete user",
-              handleClick: () => {
-                setShowBlock(false);
-                setShowDelete(true);
-                setShowAddAdmin(false);
+              handleClick: function () {
+                setSelectedItem(this);
               },
             },
             {
+              id: 3,
               label: "add admin",
-              handleClick: () => {
-                setShowBlock(false);
-                setShowDelete(false);
-                setShowAddAdmin(true);
+              handleClick: function () {
+                setSelectedItem(this);
               },
             },
           ]}
         />
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          {showBlock ? (
-            <BlockUsers></BlockUsers>
-          ) : showDelete ? (
-            <DeleteUsers></DeleteUsers>
-          ) : showAddAdmin ? (
-            <AddAdmin></AddAdmin>
-          ) : (
+          {!selectedItem ? (
             <div style={{ marginTop: "100px" }}>
               <h1>Welcome dear admin!</h1>
             </div>
+          ) : selectedItem.id == 1 ? (
+            <BlockUsers></BlockUsers>
+          ) : selectedItem.id == 2 ? (
+            <DeleteUsers></DeleteUsers>
+          ) : selectedItem.id == 3 ? (
+            <AddAdmin></AddAdmin>
+          ) : (
+            <></>
           )}
         </main>
       </div>
