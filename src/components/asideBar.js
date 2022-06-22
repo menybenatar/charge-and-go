@@ -12,7 +12,7 @@ export default function AsideBar({ setShowStations }) {
   }
 
   return (
-    <div class="h-50  border ">
+    <div class="h-50  border">
       <div class="container-fluid ">
         <button class="edit-btn" onClick={onOpenEditProfile}>
           Edit Profile

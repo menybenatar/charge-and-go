@@ -1,3 +1,5 @@
+import { findAllByLabelText, findByText } from "@testing-library/react";
+import axios from "axios";
 import React, { Component } from "react";
 import "../css/editProfile.css";
 
@@ -5,26 +7,30 @@ export default class EditProfile extends Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     return (
-      <div class="h-50 p-5 border rounded-3">
-        <div class="container-fluid py-5 rounded-3">
+      <div class="h-100 p-5 border rounded-3" style={{ overflowY: "scroll" }}>
+        <div class="container py-5 rounded-3">
           <div class="row g-3" style={{ "background-color": "white" }}>
             <div class="">
               <h4 class="mb-3">Edit Profile</h4>
-              <form class="needs-validation" novalidate>
+              <form
+                class="needs-validation"
+                action="http://10.0.0.5:4000/user/login"
+                method="put"
+                novalidate
+              >
                 <div class="row g-3">
                   <div class="col-sm-6">
                     <label for="firstName" class="form-label">
                       First name
                     </label>
                     <input
+                      name="firstName"
                       type="text"
                       class="form-control"
                       id="firstName"
                       placeholder=""
-                      value=""
                       required
                     />
                     <div class="invalid-feedback">
@@ -37,11 +43,11 @@ export default class EditProfile extends Component {
                       Last name
                     </label>
                     <input
+                      name="lastName"
                       type="text"
                       class="form-control"
                       id="lastName"
                       placeholder=""
-                      value=""
                       required
                     />
                     <div class="invalid-feedback">
@@ -50,29 +56,11 @@ export default class EditProfile extends Component {
                   </div>
 
                   <div class="col-12">
-                    <label for="username" class="form-label">
-                      Username
-                    </label>
-                    <div class="input-group has-validation">
-                      <span class="input-group-text">@</span>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="username"
-                        placeholder="Username"
-                        required
-                      />
-                      <div class="invalid-feedback">
-                        Your username is required.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12">
                     <label for="email" class="form-label">
                       Email <span class="text-muted">(Optional)</span>
                     </label>
                     <input
+                      name="email"
                       type="email"
                       class="form-control"
                       id="email"
@@ -84,72 +72,38 @@ export default class EditProfile extends Component {
                   </div>
 
                   <div class="col-12">
-                    <label for="address" class="form-label">
-                      Address
+                    <label for="phone" class="form-label">
+                      Phone
                     </label>
                     <input
-                      type="text"
+                      nume="phone"
                       class="form-control"
-                      id="address"
-                      placeholder="1234 Main St"
+                      id="phone"
+                      placeholder="050-1234567"
                       required
                     />
                     <div class="invalid-feedback">
-                      Please enter your shipping address.
+                      Please enter your number.
                     </div>
                   </div>
 
                   <div class="col-12">
-                    <label for="address2" class="form-label">
-                      Address 2 <span class="text-muted">(Optional)</span>
+                    <label for="password" class="form-label">
+                      Password
                     </label>
                     <input
-                      type="text"
+                      type="password"
+                      nume="password"
                       class="form-control"
-                      id="address2"
-                      placeholder="Apartment or suite"
-                    />
-                  </div>
-
-                  <div class="col-md-5">
-                    <label for="country" class="form-label">
-                      Country
-                    </label>
-                    <select class="form-select" id="country" required>
-                      <option value="">Choose...</option>
-                      <option>United States</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please select a valid country.
-                    </div>
-                  </div>
-
-                  <div class="col-md-4">
-                    <label for="state" class="form-label">
-                      State
-                    </label>
-                    <select class="form-select" id="state" required>
-                      <option value="">Choose...</option>
-                      <option>California</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please provide a valid state.
-                    </div>
-                  </div>
-
-                  <div class="col-md-3">
-                    <label for="zip" class="form-label">
-                      Zip
-                    </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="zip"
-                      placeholder=""
+                      id="password"
                       required
                     />
-                    <div class="invalid-feedback">Zip code required.</div>
+                    <div class="invalid-feedback">
+                      Please enter your password.
+                    </div>
                   </div>
+
+                  <input type="submit" value="Submit" />
                 </div>
               </form>
             </div>

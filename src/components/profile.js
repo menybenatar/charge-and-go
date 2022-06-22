@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import NavBar from "./navBar";
 import AsideBar from "./asideBar";
 import EditProfile from "./editProfile";
+import MyStations from "./myStations";
 
 export default function Profile() {
   const [showStations, setShowStations] = useState(true);
@@ -16,7 +17,7 @@ export default function Profile() {
       className="split right"
       style={{ "background-color": "#e3f2fd", height: "100%" }}
     >
-      {showStations ? <h1>dasgfsdg</h1> : <EditProfile />}
+      {showStations ? <MyStations /> : <EditProfile />}
     </div>,
   ];
 }
