@@ -9,6 +9,8 @@ import AdminRoutes from "./components/adminRoutes";
 import Admin from "./components/new_admin";
 import NavBar from "./components/navBar";
 import Notifications from "./components/notifications_window";
+import SignUp from "./components/signup";
+import SignUpAdmin from "./components/admin_signup";
 
 export default class App extends Component {
   constructor(props) {
@@ -25,6 +27,9 @@ export default class App extends Component {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signup-Admin" element={<SignUpAdmin />} />
+
           <Route element={<ProtectedRoutes />}>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />

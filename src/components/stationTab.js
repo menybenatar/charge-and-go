@@ -5,7 +5,7 @@ export default function StationTab({
   selectedStation,
 }) {
   function tabClicked(e) {
-    if (selectedStation && selectedStation.STATION_ID === station.STATION_ID)
+    if (selectedStation && selectedStation._id === station._id)
       setSelectedStation(null);
     else {
       setSelectedStation(station);
@@ -18,18 +18,16 @@ export default function StationTab({
       onClick={tabClicked}
       class={
         "list-group-item list-group-item-action py-3 lh-tight p-4 " +
-        (selectedStation && selectedStation.STATION_ID === station.STATION_ID
-          ? "active"
-          : "")
+        (selectedStation && selectedStation._id === station._id ? "active" : "")
       }
       aria-current="true"
     >
       <div class="d-flex w-100  justify-content-between">
-        <strong class="mb-1">{station.NAME}</strong>
+        <strong class="mb-1">{station.address}</strong>
       </div>
       <div class="col-10 mb-1 small" style={{ "text-align": "left" }}>
         {" "}
-        {station.DESCRIPTION}
+        {station.address}
       </div>
     </a>
   );

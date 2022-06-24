@@ -1,36 +1,68 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
+import EditProfile from "./edit_profile";
+import MapView from "./mapView";
 import NavBar from "./navBar";
 import Sidebar from "./sidebar";
+import axios from "axios";
+import cookie from "react-cookies";
 
-export default class Profile extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default function Profile() {
+  const [selectedStation, setSelectedStation] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(undefined);
+  const [showStations, setShowStations] = useState(true);
+  const [stations, setStations] = useState([]);
 
-  render() {
-    return (
-      <div class="container-fluid p-0" style={{ overflowX: "hidden" }}>
-        <NavBar />
-        <div className="row">
-          <Sidebar
-            items={[
-              {
-                label: "meny 1",
-                handleClick: () => {},
+  useEffect(async () => {
+    try {
+      const res = await axios.get("http://localhost:80/api/stations/", {
+        headers: {
+          Authorization: cookie.load("token"),
+        },
+      });
+      console.log(res);
+      setStations(res.data);
+    } catch (err) {
+      // setError(true);
+    }
+  }, []);
+
+  return (
+    <div class="container-fluid p-0" style={{ overflowX: "hidden" }}>
+      <NavBar />
+      <div className="row">
+        <Sidebar
+          selectedItem={selectedItem}
+          items={[
+            {
+              id: 1,
+              label: "edit profile",
+              handleClick: function () {
+                setSelectedItem(this);
               },
-              {
-                label: "meny 2",
-                handleClick: () => {},
+            },
+            {
+              id: 2,
+              label: "my stations",
+              handleClick: function () {
+                setSelectedItem(this);
               },
-              {
-                label: "meny 3",
-                handleClick: () => {},
-              },
-            ]}
-          />
-          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"></main>
-        </div>
+            },
+          ]}
+        />
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          {selectedItem && selectedItem.id == 1 ? (
+            <EditProfile></EditProfile>
+          ) : (
+            <div style={{ width: "80vw", height: "90vh", margin: "auto" }}>
+              <MapView
+                stations={stations}
+                setSelectedStation={setSelectedStation}
+                selectedStation={selectedStation}
+              />
+            </div>
+          )}
+        </main>
       </div>
-    );
-  }
+    </div>
+  );
 }

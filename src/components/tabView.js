@@ -11,7 +11,7 @@ export default function TabView({
       <div style={{ overflowY: "scroll", height: "100%" }}>
         {stations.map((station) => (
           <StationTab
-            key={station.STATION_ID}
+            key={station._id}
             station={station}
             setSelectedStation={setSelectedStation}
             selectedStation={selectedStation}

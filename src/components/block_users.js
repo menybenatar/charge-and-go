@@ -3,24 +3,32 @@ import "../css/home.css";
 import MapView from "../components/mapView";
 import TabView from "../components/tabView";
 import NavBar from "./navBar";
+import cookie from "react-cookies";
+import axios from "axios";
 
 export default function BlockUsers() {
   //   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const emailRef = useRef(null);
 
-  function block(e) {
+  async function block(e) {
     e.preventDefault();
     try {
-      // const res = await axios.post("http://10.0.0.5:4000/user/login", {
-      //   email: this.email,
-      //   password: this.password,
-      // });
-      // const token = res.body.token;  todo whis shai and yair !!!
-      //   cookie.save("token", token);
-      //   cookie.save("admin", true);
-      //   navigate("/home");
-    } catch (err) {}
+      console.log(cookie.load("token"));
+      const res = await axios.put(
+        "http://localhost:80/api/users/block/" + email,
+        null,
+        {
+          headers: {
+            Authorization: cookie.load("token"),
+          },
+        }
+      );
+      console.log(res.data.success);
+      alert("successful = " + (res.data.success == true));
+    } catch (err) {
+      alert("unexpected error");
+    }
     emailRef.current.value = "";
     e.submit();
   }
