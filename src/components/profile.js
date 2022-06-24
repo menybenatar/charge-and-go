@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
-import EditProfile from "./edit_profile";
+import EditProfile from "./editProfile";
 import MapView from "./mapView";
 import NavBar from "./navBar";
 import Sidebar from "./sidebar";
