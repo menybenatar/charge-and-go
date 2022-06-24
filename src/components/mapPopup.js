@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
+import "../css/stars.css";
 
 export default function MapPopup({ station }) {
   const [orders, setOrders] = useState([]);
@@ -53,6 +54,13 @@ export default function MapPopup({ station }) {
       if (!res.data.success) {
         throw new Error();
       }
+      setOrders([
+        ...orders,
+        {
+          startTime: `${startDate} ${startTime}`,
+          endTime: `${endDate} ${endTime}`,
+        },
+      ]);
     } catch (err) {
       setErrorText("Order failed!");
 
@@ -83,7 +91,10 @@ export default function MapPopup({ station }) {
       }}
     >
       <h2>{station.address}</h2>
-      <h6 style={{ textAlign: "left" }}>rating: {station.rating}</h6>
+      <div
+        class="stars"
+        style={{ "--w": `${(station.rating / 5) * 100}%` }}
+      ></div>
       <h6 style={{ textAlign: "left" }}>
         Numer of Ratings: {station.num_of_ranks}
       </h6>
@@ -100,31 +111,38 @@ export default function MapPopup({ station }) {
         <input type="date" onChange={endDateChange} />
       </div>
       <label>current orders:</label>
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Start Time</th>
-            <th scope="col">End Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map((order, index) => (
+      <div style={{ height: "200px", overflowY: "scroll" }}>
+        <table class="table">
+          <thead>
             <tr>
-              <th scope="row">{index}</th>
-              <td>{`${new Date(
-                order.startTime
-              ).toLocaleDateString()} ${new Date(
-                order.startTime
-              ).toLocaleTimeString()}`}</td>
-              <td>{`${new Date(order.endTime).toLocaleDateString()} ${new Date(
-                order.endTime
-              ).toLocaleTimeString()}`}</td>
+              <th scope="col">#</th>
+              <th scope="col">Start Time</th>
+              <th scope="col">End Time</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {orders.map((order, index) => (
+              <tr>
+                <th scope="row">{index}</th>
+                <td>{`${new Date(
+                  order.startTime
+                ).toLocaleDateString()} ${new Date(
+                  order.startTime
+                ).toLocaleTimeString()}`}</td>
+                <td>{`${new Date(
+                  order.endTime
+                ).toLocaleDateString()} ${new Date(
+                  order.endTime
+                ).toLocaleTimeString()}`}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <button onClick={bookStation} className="btn btn-primary mt-1 mb-1">
+        Book Station
+      </button>
       <div
         className={
           "alert alert-danger m-1  p-2 " + (error ? "d-block" : "d-none")
@@ -133,9 +151,6 @@ export default function MapPopup({ station }) {
       >
         {errorText}
       </div>
-      <button onClick={bookStation} className="btn btn-primary mt-3 mb-3">
-        Book Station
-      </button>
     </div>
   );
 }

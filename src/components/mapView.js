@@ -31,6 +31,7 @@ const InnerMap = compose(
   }) => (
     <GoogleMap
       onClick={React.useCallback((e) => {
+        setSelectedStation(null);
         setTouchedMap({
           lat: e.latLng.lat(),
           lng: e.latLng.lng(),
@@ -59,7 +60,7 @@ const InnerMap = compose(
         />
       ))}
 
-      {selectedStation && (
+      {selectedStation && !touchedMap && (
         <InfoWindow
           onCloseClick={() => {
             setSelectedStation(null);

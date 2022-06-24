@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "../css/stars.css";
+
 export default function StationTab({
   station,
   setSelectedStation,
@@ -24,10 +26,10 @@ export default function StationTab({
     >
       <div class="d-flex w-100  justify-content-between">
         <strong class="mb-1">{station.address}</strong>
-      </div>
-      <div class="col-10 mb-1 small" style={{ "text-align": "left" }}>
-        {" "}
-        {station.address}
+        <div
+          class="stars"
+          style={{ "--w": `${(station.rating / 5) * 100}%`, marginLeft: "0" }}
+        ></div>
       </div>
     </a>
   );
